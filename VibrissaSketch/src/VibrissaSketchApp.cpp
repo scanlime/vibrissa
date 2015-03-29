@@ -42,6 +42,9 @@ protected:
 
 void VibrissaSketchApp::setup()
 {
+    setFullScreen(true);
+    hideCursor();		
+    
     gl::Fbo::Format fmt;
     fmt.setColorInternalFormat(GL_RGB32F_ARB);
     
