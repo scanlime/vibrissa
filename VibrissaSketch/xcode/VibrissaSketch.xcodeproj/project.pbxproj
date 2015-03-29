@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 44;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,11 +14,13 @@
 		00B784B60FF439BC000DE1D7 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B784B20FF439BC000DE1D7 /* CoreAudio.framework */; };
 		5323E6B20EAFCA74003A9687 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B10EAFCA74003A9687 /* CoreVideo.framework */; };
 		5323E6B60EAFCA7E003A9687 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5323E6B50EAFCA7E003A9687 /* QTKit.framework */; };
+		754006551AC5E3FB001548E0 /* VibrissaElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 754006531AC5E3FB001548E0 /* VibrissaElement.cpp */; };
+		754006591AC7636D001548E0 /* cylinder.glslf in Resources */ = {isa = PBXBuildFile; fileRef = 754006571AC7636D001548E0 /* cylinder.glslf */; };
+		7540065A1AC7636D001548E0 /* cylinder.glslv in Resources */ = {isa = PBXBuildFile; fileRef = 754006581AC7636D001548E0 /* cylinder.glslv */; };
+		7540065C1AC7A1E4001548E0 /* colors.png in Resources */ = {isa = PBXBuildFile; fileRef = 7540065B1AC7A1E4001548E0 /* colors.png */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
-		89A935F2FAB94D508C4BEF24 /* VibrissaSketch_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AEC0A09299D9471A83F073E8 /* VibrissaSketch_Prefix.pch */; };
-		F71A9DBDF7F546CE95CB27E8 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = FDBB72B263E142F3AA315959 /* CinderApp.icns */; };
-		1BE607FCD6314716B031F1EF /* Resources.h in Headers */ = {isa = PBXBuildFile; fileRef = D18E72933F4240BBB4E6A08B /* Resources.h */; };
 		D3F47719BEAD40F8B96E8DC1 /* VibrissaSketchApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66955C296E40482FB0E2957C /* VibrissaSketchApp.cpp */; };
+		F71A9DBDF7F546CE95CB27E8 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = FDBB72B263E142F3AA315959 /* CinderApp.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,17 +29,22 @@
 		00B784B00FF439BC000DE1D7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		00B784B10FF439BC000DE1D7 /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = System/Library/Frameworks/AudioUnit.framework; sourceTree = SDKROOT; };
 		00B784B20FF439BC000DE1D7 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		0269D8102C23467C88CF52A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		5323E6B10EAFCA74003A9687 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		5323E6B50EAFCA7E003A9687 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
+		66955C296E40482FB0E2957C /* VibrissaSketchApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; name = VibrissaSketchApp.cpp; path = ../src/VibrissaSketchApp.cpp; sourceTree = "<group>"; };
+		754006531AC5E3FB001548E0 /* VibrissaElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = VibrissaElement.cpp; path = ../src/VibrissaElement.cpp; sourceTree = "<group>"; };
+		754006561AC5E42B001548E0 /* VibrissaElement.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VibrissaElement.h; path = ../include/VibrissaElement.h; sourceTree = "<group>"; };
+		754006571AC7636D001548E0 /* cylinder.glslf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cylinder.glslf; path = ../resources/cylinder.glslf; sourceTree = "<group>"; };
+		754006581AC7636D001548E0 /* cylinder.glslv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = cylinder.glslv; path = ../resources/cylinder.glslv; sourceTree = "<group>"; };
+		7540065B1AC7A1E4001548E0 /* colors.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = colors.png; path = ../resources/colors.png; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* VibrissaSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibrissaSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		66955C296E40482FB0E2957C /* VibrissaSketchApp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.cpp; path = ../src/VibrissaSketchApp.cpp; sourceTree = "<group>"; name = VibrissaSketchApp.cpp; };
-		D18E72933F4240BBB4E6A08B /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ../include/Resources.h; sourceTree = "<group>"; name = Resources.h; };
-		FDBB72B263E142F3AA315959 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; name = CinderApp.icns; };
-		0269D8102C23467C88CF52A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; name = Info.plist; };
-		AEC0A09299D9471A83F073E8 /* VibrissaSketch_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = VibrissaSketch_Prefix.pch; sourceTree = "<group>"; name = VibrissaSketch_Prefix.pch; };
+		AEC0A09299D9471A83F073E8 /* VibrissaSketch_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = VibrissaSketch_Prefix.pch; sourceTree = "<group>"; };
+		D18E72933F4240BBB4E6A08B /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
+		FDBB72B263E142F3AA315959 /* CinderApp.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CinderApp.icns; path = ../resources/CinderApp.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,10 +66,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01B97315FEAEA392516A2CEA /* Blocks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Blocks;
+			sourceTree = "<group>";
+		};
 		080E96DDFE201D6D7F000001 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				66955C296E40482FB0E2957C /* VibrissaSketchApp.cpp */,
+				754006531AC5E3FB001548E0 /* VibrissaElement.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -112,17 +127,11 @@
 			name = VibrissaSketch;
 			sourceTree = "<group>";
 		};
-		01B97315FEAEA392516A2CEA /* Blocks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Blocks;
-			sourceTree = "<group>";
-		};
 		29B97315FDCFA39411CA2CEA /* Headers */ = {
 			isa = PBXGroup;
 			children = (
 				D18E72933F4240BBB4E6A08B /* Resources.h */,
+				754006561AC5E42B001548E0 /* VibrissaElement.h */,
 				AEC0A09299D9471A83F073E8 /* VibrissaSketch_Prefix.pch */,
 			);
 			name = Headers;
@@ -131,6 +140,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				754006571AC7636D001548E0 /* cylinder.glslf */,
+				7540065B1AC7A1E4001548E0 /* colors.png */,
+				754006581AC7636D001548E0 /* cylinder.glslv */,
 				FDBB72B263E142F3AA315959 /* CinderApp.icns */,
 				0269D8102C23467C88CF52A1 /* Info.plist */,
 			);
@@ -172,6 +184,8 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "VibrissaSketch" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -196,7 +210,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				754006591AC7636D001548E0 /* cylinder.glslf in Resources */,
+				7540065A1AC7636D001548E0 /* cylinder.glslv in Resources */,
 				F71A9DBDF7F546CE95CB27E8 /* CinderApp.icns in Resources */,
+				7540065C1AC7A1E4001548E0 /* colors.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3F47719BEAD40F8B96E8DC1 /* VibrissaSketchApp.cpp in Sources */,
+				754006551AC5E3FB001548E0 /* VibrissaElement.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,24 +236,24 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = VibrissaSketch_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = VibrissaSketch_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder_d.a\"";
 				PRODUCT_NAME = VibrissaSketch;
-				WRAPPER_EXTENSION = app;
 				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
@@ -249,31 +267,31 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_OPTIMIZATION_LEVEL = 3;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = VibrissaSketch_Prefix.pch;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"NDEBUG=1",
 					"$(inherited)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = VibrissaSketch_Prefix.pch;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_LDFLAGS = "\"$(CINDER_PATH)/lib/libcinder.a\"";
 				PRODUCT_NAME = VibrissaSketch;
 				STRIP_INSTALLED_PRODUCT = YES;
-				WRAPPER_EXTENSION = app;
 				SYMROOT = ./build;
+				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = "../../../cinder_0.8.6_mac";
+				CINDER_PATH = ../../../cinder_0.8.6_mac;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
@@ -286,11 +304,11 @@
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "libc++";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = i386;
-				CINDER_PATH = "../../../cinder_0.8.6_mac";
+				CINDER_PATH = ../../../cinder_0.8.6_mac;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = "\"$(CINDER_PATH)/boost\"";
