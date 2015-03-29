@@ -94,8 +94,10 @@ void VibrissaSketchApp::update()
 
 void VibrissaSketchApp::drawGrid(float size, float step)
 {
-    gl::color( Colorf(0.17f, 0.17f, 0.17f) );
-    for(float i=-size;i<=size;i+=step) {
+    float gray = 0.12f;
+    gl::color( Colorf(gray, gray, gray) );
+
+    for (float i=-size;i<=size;i+=step) {
         gl::drawLine( Vec3f(i, 0.0f, -size), Vec3f(i, 0.0f, size) );
         gl::drawLine( Vec3f(-size, 0.0f, i), Vec3f(size, 0.0f, i) );
     }
@@ -170,12 +172,12 @@ void VibrissaSketchApp::drawElements()
     const float kMetersPerInch = 0.0254f;
     const float kMetersPerFoot = kMetersPerInch * 12;
 
-    float extent = 540 * kMetersPerFoot / 2;
+    float extent = 540 * kMetersPerFoot;
     float spacing = 20 * kMetersPerFoot;
     
     // Line of elements along the front
-    for (float x = -extent; x < extent; x += spacing) {
-        mElement.draw(Vec3f(x, 0.f, 0.f));
+    for (float t = 0.f; t <= 1.f; t += spacing / extent) {
+        mElement.draw(Vec3f((t - 0.5f) * extent, 0.f, 0.f), t);
     }
     
     float loop_center = (225 + 150) * kMetersPerFoot / 2;
@@ -185,12 +187,13 @@ void VibrissaSketchApp::drawElements()
     // Loops along path
     for (int side = -1; side <= 1; side += 2) {
         
-        for (float t = 0; t < M_PI * 2; t += M_PI / 5) {
-            float r = loop_r * (0.5f + 6.f * mPerlin.noise(sin(t) * 0.4f));
+        for (float t = 0.f; t < 1.f; t += 0.1f) {
+            float a = t * M_PI * 2.f;
+            float r = loop_r * (0.5f + 6.f * mPerlin.noise(sin(a) * 0.4f));
 
             for (int pair = 0; pair < 2; pair++) {
-                mElement.draw(Vec3f(cos(t) * r * 2.f + loop_center * side, 0.f,
-                                    sin(t) * r + loop_r * 1.5f));
+                mElement.draw(Vec3f(cos(a) * r * 2.f + loop_center * side, 0.f,
+                                    sin(a) * r + loop_r * 1.5f), t);
                 r += path_r;
             }
         }

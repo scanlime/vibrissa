@@ -13,21 +13,23 @@ void VibrissaElement::setup(ci::app::App &app)
 
     mCylinderShader = gl::GlslProg(app.loadResource("cylinder.glslv"),
                                    app.loadResource("cylinder.glslf"));
+
     mColors = loadImage(app.loadResource("colors.png"));
+    mShapes = loadImage(app.loadResource("shapes.png"));
 }
 
 void VibrissaElement::update()
 {
 }
 
-void VibrissaElement::draw(ci::Vec3f origin)
+void VibrissaElement::draw(ci::Vec3f origin, float t)
 {
     const float kMetersPerInch = 0.0254f;
     const float kMetersPerFoot = kMetersPerInch * 12.f;
 
     float r = 8.5f / 2.0f * kMetersPerInch;
-    float led_h = 4.f * kMetersPerFoot;
-    float base_h = 20.f * kMetersPerFoot;
+    float led_h = 6.f * kMetersPerFoot;
+    float base_h = 12.f * kMetersPerFoot;
     float cap_h = 1.5f * kMetersPerInch;
     const int segments = 16;
 
@@ -54,10 +56,15 @@ void VibrissaElement::draw(ci::Vec3f origin)
 
     mCylinderShader.bind();
     mCylinderShader.uniform("timer", (float) mTimer.getSeconds());
+    mCylinderShader.uniform("t", t);
+    mCylinderShader.uniform("origin", origin);
     
     mCylinderShader.uniform("colors", 0);
     mColors.bind(0);
-    
+
+    mCylinderShader.uniform("shapes", 1);
+    mShapes.bind(1);
+
     gl::drawCylinder(r, r, led_h, segments);
     
     gl::disable(GL_TEXTURE_2D);

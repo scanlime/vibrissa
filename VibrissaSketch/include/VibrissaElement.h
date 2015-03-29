@@ -15,10 +15,11 @@ public:
     void setup(ci::app::App &app);
     void update();
 
-    void draw(ci::Vec3f origin);
+    void draw(ci::Vec3f origin, float t);
     
 private:
     ci::gl::GlslProg mCylinderShader;
     ci::gl::Texture mColors;
+    ci::gl::Texture mShapes;
     ci::Timer mTimer;
 };
