@@ -35,7 +35,8 @@ void VibrissaElement::draw(ci::Vec3f origin)
     gl::translate(origin);
 
     // Utility pole base
-    gl::color(0.2f, 0.2f, 0.2f);
+    float gray = 0.05f;
+    gl::color(gray, gray, gray);
     gl::drawCylinder(r, r, base_h, segments);
 
     // Endcap

@@ -10,9 +10,9 @@ varying vec4 world_coordinate;
 
 const int NUM_LEDS = 512;
 const vec3 ANISOTROPY = vec3(1.0f, 4.0f, 1.0f);
-const float GAMMA = 1.0 / 2.2;
+const float GAMMA = 1.0 / 2.5;
 const float BRIGHTNESS = 0.1;
-const float TURNS = 40.0;
+const float TURNS = 64.0;
 const float HEIGHT = 1.3;
 
 
@@ -27,7 +27,8 @@ vec3 led_position(int index)
 
 vec3 led_color(int index, vec3 position)
 {
-    return vec3(0.5);
+    vec3 c = texture2D(colors, vec2(mod(position.x + timer * 0.1, 1.0), position.y)).rgb;
+    return c * c;
 }
 
 

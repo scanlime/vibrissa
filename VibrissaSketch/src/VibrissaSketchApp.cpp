@@ -2,6 +2,7 @@
 #include "cinder/gl/gl.h"
 #include "cinder/MayaCamUI.h"
 #include "cinder/Perlin.h"
+#include "cinder/gl/Fbo.h"
 
 #include "VibrissaElement.h"
 
@@ -25,7 +26,15 @@ protected:
     MayaCamUI mMayaCam;
     VibrissaElement mElement;
     Perlin mPerlin;
+
+    gl::Fbo mFboScene;
+    gl::Fbo mFboBlur1;
+    gl::Fbo mFboBlur2;
+    gl::GlslProg mBlurShader;
+    gl::GlslProg mPostShader;
     
+    void drawScene();
+    void drawElements();
     void drawGrid(float size=100.0f, float step=5.0f);
     void drawVibrissa(Vec3f origin);
 };
@@ -33,6 +42,16 @@ protected:
 
 void VibrissaSketchApp::setup()
 {
+    gl::Fbo::Format fmt;
+    fmt.setColorInternalFormat(GL_RGB32F_ARB);
+    
+    mFboScene = gl::Fbo(getWindowWidth() * 2, getWindowHeight() * 2, fmt);
+    mFboBlur1 = gl::Fbo(getWindowWidth() / 4, getWindowHeight() / 4, fmt);
+    mFboBlur2 = gl::Fbo(getWindowWidth() / 4, getWindowHeight() / 4, fmt);
+
+    mBlurShader = gl::GlslProg(loadResource("blur.glslv"), loadResource("blur.glslf"));
+    mPostShader = gl::GlslProg(loadResource("post.glslv"), loadResource("post.glslf"));
+    
     mElement.setup(*this);
     
     CameraPersp cam;
@@ -84,14 +103,70 @@ void VibrissaSketchApp::drawGrid(float size, float step)
 
 void VibrissaSketchApp::draw()
 {
-    gl::clear( Colorf(0.1f, 0.1f, 0.1f) );
-    gl::setMatrices( mMayaCam.getCamera() );
-    
+    mFboScene.bindFramebuffer();
+    gl::setViewport(mFboScene.getBounds());
     gl::enableDepthRead();
     gl::enableDepthWrite();
+
+    drawScene();
+
+    mFboScene.unbindFramebuffer();
+    gl::disableDepthRead();
+    gl::disableDepthWrite();
+    gl::color(1.f, 1.f, 1.f);
     
+    const float atten = 2.5f;
+    for (unsigned step = 0; step < 10; step++) {
+        
+        // Horizontal blur
+        mFboBlur1.bindFramebuffer();
+        gl::setViewport(mFboBlur1.getBounds());
+        gl::setMatricesWindow(mFboBlur1.getSize());
+        mBlurShader.bind();
+        mBlurShader.uniform("tex0", 0);
+        mBlurShader.uniform("sample_offset", Vec2f(1.f / mFboBlur1.getWidth(), 0.f));
+        mBlurShader.uniform("attenuation", step ? 1.f : atten);
+        gl::draw(step ? mFboBlur2.getTexture() : mFboScene.getTexture(),
+                 Rectf(Vec2f(0,0), mFboBlur1.getSize()));
+        mBlurShader.unbind();
+        mFboBlur1.unbindFramebuffer();
+
+        // Vertical blur
+        mFboBlur2.bindFramebuffer();
+        gl::setViewport(mFboBlur2.getBounds());
+        gl::setMatricesWindow(mFboBlur2.getSize());
+        mBlurShader.bind();
+        mBlurShader.uniform("tex0", 0);
+        mBlurShader.uniform("sample_offset", Vec2f(0.f, 1.f / mFboBlur2.getWidth()));
+        mBlurShader.uniform("attenuation", 1.f);
+        gl::draw(mFboBlur1.getTexture(), Rectf(Vec2f(0,0), mFboBlur2.getSize()));
+        mBlurShader.unbind();
+        mFboBlur2.unbindFramebuffer();
+    }
+        
+    // Final scene, combine blurred and unblurred
+    gl::setViewport(getWindowBounds());
+    gl::setMatricesWindow(getWindowSize(), false);
+    mPostShader.bind();
+    mPostShader.uniform("scene", 0);
+    mPostShader.uniform("blurred", 1);
+    mFboBlur2.getTexture().bind(1);
+    gl::draw(mFboScene.getTexture(), Rectf(Vec2f(0,0), getWindowSize()));
+    mPostShader.unbind();
+}
+
+void VibrissaSketchApp::drawScene()
+{
+    float gray = 0.02f;
+    gl::clear(Colorf(gray, gray, gray));
+
+    gl::setMatrices(mMayaCam.getCamera());
     drawGrid();
+    drawElements();
+}
     
+void VibrissaSketchApp::drawElements()
+{
     const float kMetersPerInch = 0.0254f;
     const float kMetersPerFoot = kMetersPerInch * 12;
 
@@ -121,6 +196,5 @@ void VibrissaSketchApp::draw()
         }
     }
 }
-
 
 CINDER_APP_NATIVE( VibrissaSketchApp, RendererGl )
