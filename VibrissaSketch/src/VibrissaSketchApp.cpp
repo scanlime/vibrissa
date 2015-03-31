@@ -61,8 +61,8 @@ void VibrissaSketchApp::setup()
     fmt.setColorInternalFormat(GL_RGB32F_ARB);
     
     mFboScene = gl::Fbo(getWindowWidth() * 2, getWindowHeight() * 2, fmt);
-    mFboBlur1 = gl::Fbo(getWindowWidth() / 4, getWindowHeight() / 4, fmt);
-    mFboBlur2 = gl::Fbo(getWindowWidth() / 4, getWindowHeight() / 4, fmt);
+    mFboBlur1 = gl::Fbo(getWindowWidth() / 2, getWindowHeight() / 2, fmt);
+    mFboBlur2 = gl::Fbo(getWindowWidth() / 2, getWindowHeight() / 2, fmt);
 
     mBlurShader = gl::GlslProg(loadResource("blur.glslv"), loadResource("blur.glslf"));
     mPostShader = gl::GlslProg(loadResource("post.glslv"), loadResource("post.glslf"));
@@ -70,8 +70,8 @@ void VibrissaSketchApp::setup()
     mElement.setup(*this);
     
     CameraPersp cam;
-    cam.setEyePoint( Vec3f(5.0f, 1.5f, -5.0f) );
-    cam.setCenterOfInterestPoint( Vec3f(20.f, 5.f, 4.f) );
+    cam.setEyePoint( Vec3f(0.f, 30.0f, -60.0f) );
+    cam.setCenterOfInterestPoint( Vec3f(0.f, 1.f, 5.f) );
     cam.setPerspective( 60.0f, getWindowAspectRatio(), 1.0f, 1000.0f );
     mMayaCam.setCurrentCam( cam );
 }
@@ -132,8 +132,10 @@ void VibrissaSketchApp::draw()
     gl::disableDepthWrite();
     gl::color(1.f, 1.f, 1.f);
     
-    const float atten = 2.5f;
-    for (unsigned step = 0; step < 10; step++) {
+    const float atten = 6.0f;
+    const unsigned blur_steps = 3;
+
+    for (unsigned step = 0; step < blur_steps; step++) {
         
         // Horizontal blur
         mFboBlur1.bindFramebuffer();
@@ -154,7 +156,7 @@ void VibrissaSketchApp::draw()
         gl::setMatricesWindow(mFboBlur2.getSize());
         mBlurShader.bind();
         mBlurShader.uniform("tex0", 0);
-        mBlurShader.uniform("sample_offset", Vec2f(0.f, 1.f / mFboBlur2.getWidth()));
+        mBlurShader.uniform("sample_offset", Vec2f(0.f, 1.f / mFboBlur2.getHeight()));
         mBlurShader.uniform("attenuation", 1.f);
         gl::draw(mFboBlur1.getTexture(), Rectf(Vec2f(0,0), mFboBlur2.getSize()));
         mBlurShader.unbind();
