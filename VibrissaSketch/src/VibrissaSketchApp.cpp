@@ -21,6 +21,7 @@ class VibrissaSketchApp : public AppNative {
     void mouseDown(MouseEvent event);
     void mouseDrag(MouseEvent event);
     void resize();
+    void keyDown(KeyEvent event);
     
 protected:
     MayaCamUI mMayaCam;
@@ -40,11 +41,22 @@ protected:
 };
 
 
+void VibrissaSketchApp::keyDown(KeyEvent event)
+{
+    if (event.getCode() == KeyEvent::KEY_f) {
+        bool fs = !isFullScreen();
+        setFullScreen(fs);
+        if (fs) {
+            hideCursor();
+        } else {
+            showCursor();
+        }
+    }
+}
+
+
 void VibrissaSketchApp::setup()
 {
-    setFullScreen(true);
-    hideCursor();		
-    
     gl::Fbo::Format fmt;
     fmt.setColorInternalFormat(GL_RGB32F_ARB);
     
