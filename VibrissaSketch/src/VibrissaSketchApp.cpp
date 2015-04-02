@@ -182,6 +182,7 @@ void VibrissaSketchApp::drawScene()
     gl::setMatrices(mMayaCam.getCamera());
     drawGrid();
     drawElements();
+    mElement.drawProjection();
 }
     
 void VibrissaSketchApp::drawElements()

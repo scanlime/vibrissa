@@ -16,10 +16,14 @@ public:
     void update();
 
     void draw(ci::Vec3f origin, float t);
+    void drawProjection();
     
 private:
     ci::gl::GlslProg mCylinderShader;
+    ci::gl::GlslProg mProjectionShader;
+
     ci::gl::Texture mColors;
     ci::gl::Texture mShapes;
+    ci::gl::Texture mModulator;
     ci::Timer mTimer;
 };

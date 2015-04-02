@@ -14,8 +14,12 @@ void VibrissaElement::setup(ci::app::App &app)
     mCylinderShader = gl::GlslProg(app.loadResource("cylinder.glslv"),
                                    app.loadResource("cylinder.glslf"));
 
+    mProjectionShader = gl::GlslProg(app.loadResource("projection.glslv"),
+                                     app.loadResource("projection.glslf"));
+
     mColors = loadImage(app.loadResource("colors.png"));
     mShapes = loadImage(app.loadResource("shapes.png"));
+    mModulator = loadImage(app.loadResource("modulator.png"));
 }
 
 void VibrissaElement::update()
@@ -72,4 +76,28 @@ void VibrissaElement::draw(ci::Vec3f origin, float t)
 
     gl::popModelView();
     gl::popModelView();
+}
+
+void VibrissaElement::drawProjection()
+{
+    mProjectionShader.bind();
+    mProjectionShader.uniform("timer", (float) mTimer.getSeconds());
+    
+    mProjectionShader.uniform("colors", 0);
+    mColors.bind(0);
+    
+    mProjectionShader.uniform("shapes", 1);
+    mShapes.bind(1);
+    
+    mProjectionShader.uniform("modulator", 2);
+    mModulator.bind(2);
+
+    gl::pushModelView();
+    gl::rotate(Vec3f(90.f, 0.f, 0.f));
+    gl::scale(22.f, 12.f, 1.f);
+    gl::drawSolidRect(Rectf(-1, -1, 1, 1));
+    gl::popModelView();
+    
+    gl::disable(GL_TEXTURE_2D);
+    mProjectionShader.unbind();
 }

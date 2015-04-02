@@ -23,6 +23,9 @@
 		754006631AC7C46C001548E0 /* post.glslf in Resources */ = {isa = PBXBuildFile; fileRef = 754006611AC7C46C001548E0 /* post.glslf */; };
 		754006641AC7C46C001548E0 /* post.glslv in Resources */ = {isa = PBXBuildFile; fileRef = 754006621AC7C46C001548E0 /* post.glslv */; };
 		754006661AC7FF64001548E0 /* shapes.png in Resources */ = {isa = PBXBuildFile; fileRef = 754006651AC7FF64001548E0 /* shapes.png */; };
+		75EC305F1ACCF39100D8619D /* projection.glslf in Resources */ = {isa = PBXBuildFile; fileRef = 75EC305D1ACCF39100D8619D /* projection.glslf */; };
+		75EC30601ACCF39100D8619D /* projection.glslv in Resources */ = {isa = PBXBuildFile; fileRef = 75EC305E1ACCF39100D8619D /* projection.glslv */; };
+		75EC30621ACD4EEC00D8619D /* modulator.png in Resources */ = {isa = PBXBuildFile; fileRef = 75EC30611ACD4EEC00D8619D /* modulator.png */; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		D3F47719BEAD40F8B96E8DC1 /* VibrissaSketchApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 66955C296E40482FB0E2957C /* VibrissaSketchApp.cpp */; };
 		F71A9DBDF7F546CE95CB27E8 /* CinderApp.icns in Resources */ = {isa = PBXBuildFile; fileRef = FDBB72B263E142F3AA315959 /* CinderApp.icns */; };
@@ -51,6 +54,9 @@
 		754006611AC7C46C001548E0 /* post.glslf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = post.glslf; path = ../resources/post.glslf; sourceTree = "<group>"; };
 		754006621AC7C46C001548E0 /* post.glslv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = post.glslv; path = ../resources/post.glslv; sourceTree = "<group>"; };
 		754006651AC7FF64001548E0 /* shapes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = shapes.png; path = ../resources/shapes.png; sourceTree = "<group>"; };
+		75EC305D1ACCF39100D8619D /* projection.glslf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = projection.glslf; path = ../resources/projection.glslf; sourceTree = "<group>"; };
+		75EC305E1ACCF39100D8619D /* projection.glslv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = projection.glslv; path = ../resources/projection.glslv; sourceTree = "<group>"; };
+		75EC30611ACD4EEC00D8619D /* modulator.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = modulator.png; path = ../resources/modulator.png; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* VibrissaSketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VibrissaSketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEC0A09299D9471A83F073E8 /* VibrissaSketch_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = "\"\""; path = VibrissaSketch_Prefix.pch; sourceTree = "<group>"; };
 		D18E72933F4240BBB4E6A08B /* Resources.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Resources.h; path = ../include/Resources.h; sourceTree = "<group>"; };
@@ -150,13 +156,16 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				75EC30611ACD4EEC00D8619D /* modulator.png */,
+				75EC305D1ACCF39100D8619D /* projection.glslf */,
+				75EC305E1ACCF39100D8619D /* projection.glslv */,
 				754006651AC7FF64001548E0 /* shapes.png */,
 				754006611AC7C46C001548E0 /* post.glslf */,
 				754006621AC7C46C001548E0 /* post.glslv */,
 				7540065D1AC7B274001548E0 /* blur.glslf */,
 				7540065E1AC7B274001548E0 /* blur.glslv */,
-				754006571AC7636D001548E0 /* cylinder.glslf */,
 				7540065B1AC7A1E4001548E0 /* colors.png */,
+				754006571AC7636D001548E0 /* cylinder.glslf */,
 				754006581AC7636D001548E0 /* cylinder.glslv */,
 				FDBB72B263E142F3AA315959 /* CinderApp.icns */,
 				0269D8102C23467C88CF52A1 /* Info.plist */,
@@ -228,9 +237,12 @@
 				754006591AC7636D001548E0 /* cylinder.glslf in Resources */,
 				7540065A1AC7636D001548E0 /* cylinder.glslv in Resources */,
 				F71A9DBDF7F546CE95CB27E8 /* CinderApp.icns in Resources */,
+				75EC305F1ACCF39100D8619D /* projection.glslf in Resources */,
 				754006601AC7B274001548E0 /* blur.glslv in Resources */,
 				7540065F1AC7B274001548E0 /* blur.glslf in Resources */,
 				7540065C1AC7A1E4001548E0 /* colors.png in Resources */,
+				75EC30621ACD4EEC00D8619D /* modulator.png in Resources */,
+				75EC30601ACCF39100D8619D /* projection.glslv in Resources */,
 				754006641AC7C46C001548E0 /* post.glslv in Resources */,
 				754006631AC7C46C001548E0 /* post.glslf in Resources */,
 				754006661AC7FF64001548E0 /* shapes.png in Resources */,
