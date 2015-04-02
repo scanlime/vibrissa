@@ -188,14 +188,6 @@ void VibrissaSketchApp::drawElements()
 {
     const float kMetersPerInch = 0.0254f;
     const float kMetersPerFoot = kMetersPerInch * 12;
-
-    float extent = 540 * kMetersPerFoot;
-    float spacing = 20 * kMetersPerFoot;
-    
-    // Line of elements along the front
-    for (float t = 0.f; t <= 1.f; t += spacing / extent) {
-        mElement.draw(Vec3f((t - 0.5f) * extent, 0.f, 0.f), t);
-    }
     
     float loop_center = (225 + 150) * kMetersPerFoot / 2;
     float loop_r = 80 * kMetersPerFoot / 2;
@@ -204,7 +196,7 @@ void VibrissaSketchApp::drawElements()
     // Loops along path
     for (int side = -1; side <= 1; side += 2) {
         
-        for (float t = 0.f; t < 1.f; t += 0.1f) {
+        for (float t = 0.f; t < 1.f; t += 0.08f) {
             float a = t * M_PI * 2.f;
             float r = loop_r * (0.5f + 6.f * mPerlin.noise(sin(a) * 0.4f));
 

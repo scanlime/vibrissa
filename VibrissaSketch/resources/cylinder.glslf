@@ -51,7 +51,7 @@ vec3 led_color(int index, vec3 position)
                                     0.3 + 0.5 * cos(timer * 0.1))).rgb;
 
     // Shape sample
-    float x = timer * 0.03 + origin.x * 0.003 + position.x * 0.00015;
+    float x = timer * 0.03 + -origin.x * 0.001 + -position.x * 0.00015;
     float s = texture2D(shapes, vec2( mod(x, 1.0), position.y / HEIGHT )).r;
 
     return c * s * s;
